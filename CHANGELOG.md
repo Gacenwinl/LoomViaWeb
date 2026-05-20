@@ -26,7 +26,7 @@
 ### Added
 - **阶段八**：晨间 `DIRECTION` + `GET READY` + `DAY PLANNER` 完整流水线
 - 芯烨云热敏可选出纸（多次实机验证通过）
-- `demo/` 路演展示页初版
+- `web/` LoomViaWeb 运维控制台初版
 
 ### Changed
 - `AGENTS.md`：精英秘书默认判断优先级高于泛化闲聊

@@ -1,6 +1,6 @@
-# 嘉豪 JIAHAO
+# LoomViaWeb · 嘉豪 JIAHAO
 
-> 基于 OpenClaw 的个人 GTD & OKR **执行型 Agent** — 将 QQ 低摩擦输入、大模型推理与 Obsidian 第二大脑打通，形成可版本化的人生轨迹闭环。
+> 基于 OpenClaw 的个人 GTD & OKR **执行型 Agent** — 将 QQ 低摩擦输入、大模型推理与 Obsidian 第二大脑打通，形成可版本化的人生轨迹闭环。本仓库为 **7×24 生产配置**（Gateway、Vault 同步、运维控制台与 Skill 约束）。
 
 [![Status](https://img.shields.io/badge/status-production-00c853?style=flat-square)](https://github.com)
 [![OpenClaw](https://img.shields.io/badge/orchestrator-OpenClaw-00d4ff?style=flat-square)](https://github.com)
@@ -74,7 +74,7 @@
 ├── docs/                   # 架构、部署、Vault 约定
 ├── scripts/                # 宿主机辅助脚本（autosync、健康检查）
 ├── vault-samples/          # Vault 目录与 Daily 模板样例
-├── demo/                   # 路演用纯前端展示页（模拟数据）
+├── web/                    # LoomViaWeb 运维控制台（Nginx 静态托管）
 ├── docker-compose.yml
 ├── Makefile
 └── CHANGELOG.md
@@ -95,18 +95,19 @@
 ### 1. 克隆与配置
 
 ```bash
-git clone https://gitee.com/your-org/jiahao.git
-cd jiahao
+git clone git@github.com:Gacenwinl/LoomViaWeb.git
+cd LoomViaWeb
 cp config/openclaw.env.example .env
 cp config/gateway.example.yaml config/gateway.yaml
 # 编辑 .env：SILICONFLOW_API_KEY、VAULT_PATH、QQ 凭据等
 ```
 
-### 2. 部署 Gateway（示例：Docker Compose）
+### 2. 部署 Gateway + LoomViaWeb 控制台（Docker Compose）
 
 ```bash
 docker compose up -d
 make healthcheck
+# 运维控制台 http://<host>:8080
 ```
 
 ### 3. 启用 Vault 自动同步（宿主机 cron）
@@ -154,13 +155,13 @@ sudo cp deploy/cron/loom-vault-autosync /etc/cron.d/
 
 ---
 
-## Demo 展示页
+## LoomViaWeb 运维控制台
 
-路演或截图用纯前端单页（**不连接生产 Gateway**）：
+与 Gateway 同仓库部署，用于查看运行态与当日流水线进度。详见 [docs/web-console.md](docs/web-console.md)。
 
 ```bash
-cd demo && python3 -m http.server 8080
-# http://localhost:8080
+make web              # 本地 :8080
+# 生产环境随 compose 启动 loom-web 服务
 ```
 
 ---
@@ -171,6 +172,7 @@ cd demo && python3 -m http.server 8080
 make healthcheck      # Gateway + Vault 挂载
 make logs             # 跟踪 Gateway 日志
 make sync-dry-run     # 预览 autosync 将提交的文件
+make web              # 启动运维控制台（开发）
 ```
 
 生产环境建议：Vault 仅通过 Gateway 与 autosync 写入；本地 Obsidian 以 pull 为主，避免三端同时改同一 Daily。
@@ -185,7 +187,7 @@ make sync-dry-run     # 预览 autosync 将提交的文件
 
 ## 许可
 
-本项目为个人生产环境配置与文档集合，默认 [MIT](LICENSE)。`vault-samples/` 内模板可自由复用。
+个人生产环境，默认 [MIT](LICENSE)。`vault-samples/` 为初始化模板，复制至真实 Vault 后使用。
 
 ---
 

@@ -33,3 +33,9 @@ channels:
   qq:
     enabled: true
     config_file: /config/channels.qq.yaml
+
+web_console:
+  enabled: true
+  static_root: /opt/loomviaweb/web
+  # 生产由 compose 服务 loom-web (nginx) 在 :8080 托管
+  api_prefix: /api/v1

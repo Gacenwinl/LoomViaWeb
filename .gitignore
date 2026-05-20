@@ -17,9 +17,10 @@ logs/
 *.log
 .openclaw/runtime/
 
-# Demo / local
+# Web / local
 node_modules/
 dist/
+web/.cache/
 
 # ChromaDB (planned)
 data/chromadb/

@@ -12,8 +12,7 @@
 
 ## 不在范围
 
-- Demo 页 `demo/` 中的模拟数据
-- `vault-samples/` 中的虚构内容
+- `vault-samples/` 仅为模板，不含真实个人数据
 
 ## 建议
 

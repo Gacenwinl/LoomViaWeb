@@ -16,9 +16,9 @@ done
 : "${XPRINTER_UKEY:?}"
 : "${XPRINTER_SN:?}"
 
-# 演示环境：无真实 API 时仅 echo
-if [[ "${JIAHAO_DEMO_PRINT:-0}" == "1" ]]; then
-  echo "[xprinter-demo] would print:"
+# 干跑：不调用芯烨云 API
+if [[ "${JIAHAO_PRINT_DRY_RUN:-0}" == "1" ]]; then
+  echo "[xprinter] dry-run:"
   echo "$JSON" | python3 -m json.tool 2>/dev/null || echo "$JSON"
   exit 0
 fi

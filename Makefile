@@ -1,13 +1,13 @@
-.PHONY: help up down logs healthcheck sync-dry-run demo
+.PHONY: help up down logs healthcheck sync-dry-run web
 
 help:
-	@echo "嘉豪 JIAHAO — 常用命令"
-	@echo "  make up            启动 Gateway (docker compose)"
-	@echo "  make down          停止 Gateway"
+	@echo "LoomViaWeb / 嘉豪 JIAHAO — 常用命令"
+	@echo "  make up            启动 Gateway + loom-web (docker compose)"
+	@echo "  make down          停止全部服务"
 	@echo "  make logs          跟踪 Gateway 日志"
 	@echo "  make healthcheck   健康检查"
 	@echo "  make sync-dry-run  预览 Vault autosync"
-	@echo "  make demo          启动路演展示页 :8080"
+	@echo "  make web           本地启动运维控制台 :8080"
 
 up:
 	docker compose up -d
@@ -24,5 +24,5 @@ healthcheck:
 sync-dry-run:
 	@bash scripts/loom-vault-autosync.sh --dry-run
 
-demo:
-	cd demo && python3 -m http.server 8080
+web:
+	cd web && python3 -m http.server 8080

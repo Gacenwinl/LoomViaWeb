@@ -18,7 +18,7 @@ echo "==> Vault mount"
 if [[ -d "$VAULT_PATH/Daily" ]]; then
   echo "    OK $VAULT_PATH"
 else
-  echo "    WARN Daily/ not found (demo env?)" 
+  echo "    WARN Daily/ not found — check VAULT_PATH"
 fi
 
 echo "==> OpenClaw config"

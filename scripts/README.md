@@ -13,8 +13,8 @@ chmod +x scripts/*.sh
 sudo cp scripts/loom-vault-autosync.sh /usr/local/bin/
 ```
 
-演示打印（不调用真实 API）：
+干跑打印（不调用芯烨云 API）：
 
 ```bash
-JIAHAO_DEMO_PRINT=1 ./scripts/xprinter-loom.sh --json '{"LOOM_TITLE":"测试","LOOM_FIRST_ACTION":"打开终端"}'
+JIAHAO_PRINT_DRY_RUN=1 ./scripts/xprinter-loom.sh --json '{"LOOM_TITLE":"测试","LOOM_FIRST_ACTION":"打开终端"}'
 ```

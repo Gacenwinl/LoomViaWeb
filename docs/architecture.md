@@ -13,6 +13,7 @@
 |------|------|
 | QQ Channel | 接入、限流、指令路由 |
 | OpenClaw Gateway | 会话、工具调用、Skill 加载 |
+| LoomViaWeb (`web/`) | 运维控制台，Gateway 状态与流水线 HUD |
 | DeepSeek-V3.2 | 意图识别与结构化输出（tool-use） |
 | Obsidian Vault | Daily / OKR / Inbox / Health |
 | loom-vault-autosync | 宿主机 cron，commit & push |

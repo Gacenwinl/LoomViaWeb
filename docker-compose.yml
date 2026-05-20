@@ -24,3 +24,14 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  loom-web:
+    image: nginx:1.27-alpine
+    container_name: loom-via-web
+    restart: unless-stopped
+    volumes:
+      - ./web:/usr/share/nginx/html:ro
+    ports:
+      - "8080:80"
+    depends_on:
+      - openclaw-gateway

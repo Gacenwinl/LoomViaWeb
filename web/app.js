@@ -1,4 +1,4 @@
-/* 嘉豪 Demo — 纯前端交互与模拟数据 */
+/* LoomViaWeb — 嘉豪运维控制台（Gateway 状态 HUD） */
 
 const TYPEWRITER_LINES = [
   "将 QQ 低摩擦输入、大模型推理与 Obsidian 第二大脑打通，形成可版本化的人生轨迹闭环。",
