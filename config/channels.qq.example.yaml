@@ -1,0 +1,26 @@
+# QQ 机器人通道（复制为 channels.qq.yaml，已 gitignore）
+
+qq:
+  app_id: "your_app_id"
+  token: "your_bot_token"
+  sandbox: false
+
+routing:
+  # 仅响应私聊与指定群
+  allow_dm: true
+  allow_groups:
+    - "123456789"
+
+commands:
+  morning:
+    - "晨间"
+    - "早上规划"
+  evening:
+    - "复盘"
+    - "晚间"
+  friction:
+    - "启动困难"
+    - "卡住了"
+
+rate_limit:
+  per_user_per_minute: 12

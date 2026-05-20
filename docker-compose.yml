@@ -1,0 +1,26 @@
+# 嘉豪 · OpenClaw Gateway 生产编排（示例）
+# 复制 config/openclaw.env.example → .env 后启动
+
+services:
+  openclaw-gateway:
+    image: openclaw/gateway:latest
+    container_name: jiahao-gateway
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ${VAULT_PATH}:/vault:rw
+      - ./.openclaw:/config/.openclaw:ro
+      - ./config/gateway.yaml:/config/gateway.yaml:ro
+    ports:
+      - "18789:18789"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:18789/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

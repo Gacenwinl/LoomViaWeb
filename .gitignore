@@ -1,0 +1,25 @@
+# Secrets
+.env
+*.pem
+config/gateway.yaml
+config/channels.qq.yaml
+
+# Obsidian (real vault not in repo)
+vault/
+*.obsidian/workspace.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs & runtime
+logs/
+*.log
+.openclaw/runtime/
+
+# Demo / local
+node_modules/
+dist/
+
+# ChromaDB (planned)
+data/chromadb/

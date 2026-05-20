@@ -1,0 +1,35 @@
+# OpenClaw Gateway 配置（复制为 gateway.yaml，已 gitignore）
+
+gateway:
+  name: jiahao
+  bind: 0.0.0.0:18789
+  log_level: info
+
+agent:
+  instructions: /config/.openclaw/AGENTS.md
+  memory: /config/.openclaw/MEMORY.md
+  skills_dir: /config/.openclaw/skills
+
+llm:
+  provider: siliconflow
+  base_url: https://api.siliconflow.cn/v1
+  model: ${OPENCLAW_MODEL}
+  reasoning: false
+
+tools:
+  allow:
+    - read
+    - edit
+    - exec
+  exec_whitelist:
+    - /opt/jiahao/scripts/xprinter-loom.sh
+    - /usr/local/bin/loom-vault-autosync.sh
+
+vault:
+  mount: /vault
+  daily_pattern: "Daily/{date}.md"
+
+channels:
+  qq:
+    enabled: true
+    config_file: /config/channels.qq.yaml

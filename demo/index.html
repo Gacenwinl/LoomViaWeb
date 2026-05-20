@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>嘉豪 · OpenClaw GTD & OKR 执行型 Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <nav class="nav">
+    <div class="nav-brand">
+      <span class="logo-ring"></span>
+      <span class="logo-text">嘉豪 <em>JIAHAO</em></span>
+    </div>
+    <div class="nav-links">
+      <a href="#architecture">架构</a>
+      <a href="#capabilities">能力</a>
+      <a href="#workflow">工作流</a>
+      <a href="#roadmap">规划</a>
+    </div>
+    <div class="nav-status">
+      <span class="pulse-dot"></span>
+      <span>7×24 生产运行</span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-badge">OpenClaw · Obsidian · SiliconFlow</div>
+    <h1 class="hero-title">
+      <span class="title-line">个人 GTD &amp; OKR</span>
+      <span class="title-line accent">执行型 Agent</span>
+    </h1>
+    <p class="hero-sub" id="typewriter"></p>
+    <div class="hero-metrics">
+      <div class="metric">
+        <span class="metric-val" data-target="24">0</span>
+        <span class="metric-unit">/7</span>
+        <span class="metric-label">VPS 在线</span>
+      </div>
+      <div class="metric">
+        <span class="metric-val" data-target="12">0</span>
+        <span class="metric-unit">+</span>
+        <span class="metric-label">Skill 约束</span>
+      </div>
+      <div class="metric">
+        <span class="metric-val" data-target="3">0</span>
+        <span class="metric-unit">端</span>
+        <span class="metric-label">Vault 同步</span>
+      </div>
+      <div class="metric">
+        <span class="metric-val" data-target="0">0</span>
+        <span class="metric-unit">n8n</span>
+        <span class="metric-label">已退役</span>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <button class="btn primary" data-scroll="#architecture">查看系统拓扑</button>
+      <button class="btn ghost" data-scroll="#workflow">晨间 / 晚间流水线</button>
+    </div>
+  </header>
+
+  <section id="architecture" class="section">
+    <div class="section-head">
+      <span class="section-tag">SYSTEM TOPOLOGY</span>
+      <h2>可版本化的人生轨迹闭环</h2>
+      <p>QQ 低摩擦输入 → 大模型推理编排 → Obsidian 第二大脑落盘 → Gitee 三端同步</p>
+    </div>
+
+    <div class="topology">
+      <div class="topo-node input" data-delay="0">
+        <div class="node-icon">QQ</div>
+        <h3>低摩擦输入</h3>
+        <p>对话即指令，零脚本维护</p>
+      </div>
+      <div class="topo-flow" aria-hidden="true"><span class="flow-packet"></span></div>
+      <div class="topo-node gateway" data-delay="1">
+        <div class="node-icon">GW</div>
+        <h3>OpenClaw Gateway</h3>
+        <p>Hetzner VPS · exec / read / edit</p>
+      </div>
+      <div class="topo-flow" aria-hidden="true"><span class="flow-packet"></span></div>
+      <div class="topo-node vault" data-delay="2">
+        <div class="node-icon">◈</div>
+        <h3>Obsidian Vault</h3>
+        <p>真实路径 · AGENTS.md 约束</p>
+      </div>
+      <div class="topo-flow" aria-hidden="true"><span class="flow-packet"></span></div>
+      <div class="topo-node sync" data-delay="3">
+        <div class="node-icon">⟳</div>
+        <h3>loom-vault-autosync</h3>
+        <p>Gitee → Mac / iCloud</p>
+      </div>
+    </div>
+
+    <div class="arch-grid">
+      <article class="glass-card">
+        <header>
+          <span class="card-icon">🧠</span>
+          <h3>模型即编排</h3>
+          <span class="chip">DeepSeek-V3.2</span>
+        </header>
+        <p>SiliconFlow 托管，关闭 reasoning，面向 tool-use。替代易失真的外部脚本流水线。</p>
+        <ul class="spec-list">
+          <li><code>.openclaw/AGENTS.md</code></li>
+          <li><code>MEMORY.md</code></li>
+          <li><code>skill-*.md × 12+</code></li>
+        </ul>
+      </article>
+      <article class="glass-card highlight">
+        <header>
+          <span class="card-icon">⚡</span>
+          <h3>工具链统一</h3>
+          <span class="chip live">LIVE</span>
+        </header>
+        <p>n8n 已全面退役。对话、规划、复盘、打印、归档由 OpenClaw 单栈承担。</p>
+        <div class="mini-terminal" id="terminal"></div>
+      </article>
+      <article class="glass-card">
+        <header>
+          <span class="card-icon">🖨</span>
+          <h3>物理锚点</h3>
+          <span class="chip">芯烨云</span>
+        </header>
+        <p>晨间 DIRECTION + GET READY + DAY PLANNER 可选热敏小票出纸；启动困难映射 <code>LOOM_*</code> 打印字段。</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="capabilities" class="section dark-panel">
+    <div class="section-head">
+      <span class="section-tag">CAPABILITIES</span>
+      <h2>已落地能力矩阵</h2>
+    </div>
+    <div class="cap-matrix">
+      <div class="cap-item" data-phase="5">
+        <div class="cap-phase">阶段五 ✓</div>
+        <h4>晚间流水</h4>
+        <p>自动写入 Daily <code>## REVIEW</code> 四节，划勾 DAY PLANNER</p>
+        <div class="cap-bar"><span style="width: 100%"></span></div>
+      </div>
+      <div class="cap-item" data-phase="8">
+        <div class="cap-phase">阶段八 ✓</div>
+        <h4>晨间规划</h4>
+        <p>DIRECTION + GET READY + DAY PLANNER，多次实机验证</p>
+        <div class="cap-bar"><span style="width: 100%"></span></div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-phase">ADHD</div>
+        <h4>启动困难拆解</h4>
+        <p>「第一个 5 分钟动作」→ LOOM_* 字段，联动当日待办承诺</p>
+        <div class="cap-bar"><span style="width: 92%"></span></div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-phase">秘书</div>
+        <h4>精英秘书默认判断</h4>
+        <p>跨日承诺联络 · DAY PLANNER 四象限 · 台账归档</p>
+        <div class="cap-bar"><span style="width: 88%"></span></div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-phase">审计</div>
+        <h4>纸质 + 数字双轨</h4>
+        <p>A5 时间审计册 · 前缀 <code>[时间审计]</code> <code>[用药]</code> <code>[碎片]</code></p>
+        <div class="cap-bar"><span style="width: 95%"></span></div>
+      </div>
+      <div class="cap-item planned">
+        <div class="cap-phase">规划中</div>
+        <h4>Self-Model · 向量检索</h4>
+        <p>Weekly/Monthly Review 触发草稿 · ChromaDB on OKR</p>
+        <div class="cap-bar"><span style="width: 35%"></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="workflow" class="section">
+    <div class="section-head">
+      <span class="section-tag">DAILY PIPELINE</span>
+      <h2>晨间 · 晚间双流水线</h2>
+    </div>
+    <div class="pipeline-wrap">
+      <div class="pipeline-tabs">
+        <button class="tab active" data-tab="morning">晨间规划</button>
+        <button class="tab" data-tab="evening">晚间复盘</button>
+        <button class="tab" data-tab="friction">启动困难</button>
+      </div>
+      <div class="pipeline-panel active" id="panel-morning">
+        <div class="pipeline-steps">
+          <div class="step"><span>01</span><strong>DIRECTION</strong><p>当日方向与 OKR 对齐</p></div>
+          <div class="step"><span>02</span><strong>GET READY</strong><p>环境与资源就绪检查</p></div>
+          <div class="step"><span>03</span><strong>DAY PLANNER</strong><p>四象限待办 · 跨日承诺标记</p></div>
+          <div class="step optional"><span>04</span><strong>热敏出纸</strong><p>芯烨云小票 · 物理提醒锚点</p></div>
+        </div>
+        <div class="mock-doc">
+          <pre><code># Daily · 2026-05-20
+
+## DIRECTION
+- [ ] OKR-1: 核心交付推进
+
+## GET READY
+- 桌面 / 工具 / 沟通窗口
+
+## DAY PLANNER
+| 重要紧急 | 重要不紧急 |
+|----------|------------|
+| □ 任务 A  | □ 任务 B   |</code></pre>
+        </div>
+      </div>
+      <div class="pipeline-panel" id="panel-evening">
+        <div class="pipeline-steps">
+          <div class="step"><span>01</span><strong>流水采集</strong><p>QQ 对话与当日行为归档</p></div>
+          <div class="step"><span>02</span><strong>## REVIEW 四节</strong><p>自动写入 Daily 复盘结构</p></div>
+          <div class="step"><span>03</span><strong>划勾 DAY PLANNER</strong><p>完成态回写 Vault</p></div>
+          <div class="step"><span>04</span><strong>autosync commit</strong><p>Gitee 版本化轨迹</p></div>
+        </div>
+        <div class="mock-doc">
+          <pre><code>## REVIEW
+### 今日完成
+- 阶段五流水线实测通过
+
+### 未完成 / 结转
+- 跨日承诺已标记联络
+
+### 情绪与能量
+- ...
+
+### 明日种子
+- ...</code></pre>
+        </div>
+      </div>
+      <div class="pipeline-panel" id="panel-friction">
+        <div class="pipeline-steps">
+          <div class="step"><span>01</span><strong>识别阻滞</strong><p>用户描述「启动困难」场景</p></div>
+          <div class="step"><span>02</span><strong>5 分钟动作</strong><p>拆解为可立即执行的最小动作</p></div>
+          <div class="step"><span>03</span><strong>LOOM_* 映射</strong><p>打印字段 + 当日待办承诺联动</p></div>
+        </div>
+        <div class="receipt-preview">
+          <div class="receipt">
+            <p class="receipt-title">LOOM 启动锚点</p>
+            <p class="receipt-line">第一个动作：打开 IDE，创建分支</p>
+            <p class="receipt-line">承诺：14:00 前完成接口联调</p>
+            <p class="receipt-dashed">————————</p>
+            <p class="receipt-meta">芯烨云 · 热敏 58mm</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hud-section">
+    <div class="hud-grid">
+      <div class="hud-panel">
+        <h3>实时状态 <span class="blink">LIVE</span></h3>
+        <div class="hud-rows" id="hud-status"></div>
+      </div>
+      <div class="hud-panel">
+        <h3>今日 Vault 活动</h3>
+        <canvas id="sparkline" width="400" height="120"></canvas>
+      </div>
+      <div class="hud-panel wide">
+        <h3>约束层 · Skill 拓扑</h3>
+        <div class="skill-orbit" id="skill-orbit"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="section">
+    <div class="section-head">
+      <span class="section-tag">ROADMAP</span>
+      <h2>下一阶段</h2>
+    </div>
+    <div class="roadmap-timeline">
+      <div class="rm-item done">
+        <div class="rm-dot"></div>
+        <time>已交付</time>
+        <h4>晚间 REVIEW + DAY PLANNER 闭环</h4>
+      </div>
+      <div class="rm-item done">
+        <div class="rm-dot"></div>
+        <time>已交付</time>
+        <h4>晨间规划 + 热敏出纸</h4>
+      </div>
+      <div class="rm-item active">
+        <div class="rm-dot"></div>
+        <time>进行中</time>
+        <h4>Self-Model 自动更新</h4>
+      </div>
+      <div class="rm-item">
+        <div class="rm-dot"></div>
+        <time>规划</time>
+        <h4>Weekly / Monthly Review 触发式草稿</h4>
+      </div>
+      <div class="rm-item">
+        <div class="rm-dot"></div>
+        <time>规划</time>
+        <h4>ChromaDB · Review / OKR 向量检索</h4>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>嘉豪 · 代号 JIAHAO — 基于 OpenClaw 的个人执行型 Agent</p>
+    <p class="footer-sub">Demo 展示页 · 纯前端 · 数据为模拟</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

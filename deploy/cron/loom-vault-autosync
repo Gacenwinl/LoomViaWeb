@@ -1,0 +1,5 @@
+# 嘉豪 · Vault 自动同步（每 15 分钟）
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+*/15 * * * * deploy VAULT_PATH=/home/deploy/obsidian-vault GITEE_BRANCH=main /usr/local/bin/loom-vault-autosync.sh >> /var/log/loom-autosync.log 2>&1

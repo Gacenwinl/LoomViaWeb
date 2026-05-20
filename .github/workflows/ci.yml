@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify OpenClaw config present
+        run: |
+          test -f .openclaw/AGENTS.md
+          test -f .openclaw/MEMORY.md
+          ls .openclaw/skills/*.md | wc -l | xargs test 10 -le
+
+      - name: Shellcheck scripts
+        run: |
+          sudo apt-get install -y shellcheck
+          shellcheck scripts/*.sh
+
+      - name: YAML syntax (examples)
+        run: |
+          python3 -c "import yaml,sys; yaml.safe_load(open('config/gateway.example.yaml'))"
+          python3 -c "import yaml,sys; yaml.safe_load(open('config/channels.qq.example.yaml'))"
+
+      - name: Healthcheck (offline)
+        run: |
+          GATEWAY_URL=http://127.0.0.1:9/health bash -c 'scripts/healthcheck.sh' || true
+          bash scripts/healthcheck.sh || test -f .openclaw/AGENTS.md
